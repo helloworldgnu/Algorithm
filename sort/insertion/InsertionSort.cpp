@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[]) 
 {
-    std::vector<int> vec = gernerateRandomIntVector(0, 10, 10000);
+    std::vector<int> vec = generateRandomIntVector(0, 10, 10000);
     // std::vector<int> vec = gernerateBasicOrderIntVector(10000, 100);
 
     Timer timer;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     insertionSort(vec);
 
     timer.stop();
-    timer.printTimeConsuming();
+    timer.printTimeConsumed();
 
     return EXIT_SUCCESS;
 }

@@ -7,16 +7,27 @@ template <typename T>
 void shellSort(std::vector<T> &inVec)
 {
     int length = inVec.size();
-    int h = 1;
+    int h =  1;
     while (h < length / 3) {
         h = 3 * h + 1;
     }
+
+    T value;
+    int j;
     while(h >= 1) {
         for (int i = h; i < length; ++i) {
-            for (int j = i; j >= h; j -= h) {
-                if (inVec[j] < inVec[j - h]) {
-                    std::swap(inVec[j], inVec[j - h]);
+            value = inVec[i];
+            j = i;
+            for (; j >= h; j -= h) {
+                if (value < inVec[j - h]) {
+                    inVec[j] = inVec[j - h];
+                } else {
+                    break;
                 }
+            }
+
+            if (j != i) {
+                inVec[j] = value;
             }
         }
 

@@ -14,7 +14,7 @@ void insertionSort(std::vector<T> &inVec)
         j = i;
         for (; j > 0; --j) {
             if (value < inVec[j - 1]) {
-                std::swap(inVec[j - 1], inVec[j]);
+                inVec[j] = inVec[j - 1];
             } else {
                 break;
             }
