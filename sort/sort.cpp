@@ -6,11 +6,14 @@
 
 #include "./insertion/InsertionSort.h"
 #include "./shell/ShellSort.h"
+#include "./merge/MergeSort.h"
 
 int main(int argc, char *argv[]) 
 {
-    std::vector<int> vec1 = generateRandomIntVector(0, 10, 100000);
+    std::vector<int> vec1 = generateRandomIntVector(0, 10, 10000);
     std::vector<int> vec2 = makeVectorCopy(vec1);
+    std::vector<int> vec3 = makeVectorCopy(vec1);
+
 
     Timer timer;
 
@@ -22,7 +25,7 @@ int main(int argc, char *argv[])
     insertionSort(vec1);
     
     timer.stop();
-    timer.printTimeConsumed();
+    timer.printMicroseconds();
 
     // printVec(vec1);
 
@@ -34,9 +37,21 @@ int main(int argc, char *argv[])
     shellSort(vec2);
     
     timer.stop();
-    timer.printTimeConsumed();
+    timer.printMicroseconds();
 
     // printVec(vec2);
+
+    // printVec(vec3);
+
+    // 归并排序
+    timer.start();
+
+    mergeSort(vec3);
+    
+    timer.stop();
+    timer.printMicroseconds();
+    
+    // printVec(vec3);
 
     return EXIT_SUCCESS;
 }

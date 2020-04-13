@@ -47,6 +47,12 @@ public:
         std::cout << "time consumed: " << duration.count() << "(milliseconds)" << std::endl;
     }
 
+    void printMicroseconds()
+    {
+        std::chrono::microseconds duration = std::chrono::duration_cast<std::chrono::microseconds>(this->endPoint - this->startPoint);
+        std::cout << "time consumed: " << duration.count() << "(microseconds)" << std::endl;
+    }
+
     void printNanoseconds()
     {
         std::chrono::nanoseconds duration = std::chrono::duration_cast<std::chrono::nanoseconds>(this->endPoint - this->startPoint);
