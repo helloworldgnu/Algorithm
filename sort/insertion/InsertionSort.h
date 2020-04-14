@@ -12,7 +12,7 @@ void insertionSort(std::vector<T> &inVec, int low, int heigh)
     for (int i = low + 1; i <= heigh; ++i) {
         value = inVec[i];
         j = i;
-        for (; j > 0; --j) {
+        for (; j > low; --j) {
             if (value < inVec[j - 1]) {
                 inVec[j] = inVec[j - 1];
             } else {

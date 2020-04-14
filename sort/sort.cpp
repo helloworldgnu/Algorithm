@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[]) 
 {
-    std::vector<int> vec1 = generateRandomIntVector(0, 10, 10000);
+    std::vector<int> vec1 = generateRandomIntVector(0, 1000000, 1000000);
     std::vector<int> vec2 = makeVectorCopy(vec1);
     std::vector<int> vec3 = makeVectorCopy(vec1);
 
@@ -20,12 +20,12 @@ int main(int argc, char *argv[])
     // printVec(vec1);
 
     // 插入排序
-    timer.start();
+    // timer.start();
 
-    insertionSort(vec1, 0, vec1.size() - 1);
+    // insertionSort(vec1, 0, vec1.size() - 1);
     
-    timer.stop();
-    timer.printMicroseconds();
+    // timer.stop();
+    // timer.printMicroseconds();
 
     // printVec(vec1);
 
