@@ -6,7 +6,10 @@
 template <typename T>
 void insertionSort(std::vector<T> &inVec, int low, int heigh)
 {
-    int length = inVec.size();
+    if (low >= heigh || inVec.size() <= heigh) {
+        return;
+    }
+
     T value;
     int j;
     for (int i = low + 1; i <= heigh; ++i) {

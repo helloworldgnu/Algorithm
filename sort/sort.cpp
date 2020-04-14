@@ -7,6 +7,7 @@
 #include "./insertion/InsertionSort.h"
 #include "./shell/ShellSort.h"
 #include "./merge/MergeSort.h"
+#include "./quick/QuickSort.h"
 
 int main(int argc, char *argv[]) 
 {
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
     std::vector<int> vec2 = makeVectorCopy(vec1);
     std::vector<int> vec3 = makeVectorCopy(vec1);
     std::vector<int> vec4 = makeVectorCopy(vec1);
+    std::vector<int> vec5 = makeVectorCopy(vec1);
 
     Timer timer;
 
@@ -60,6 +62,18 @@ int main(int argc, char *argv[])
     
     timer.stop();
     timer.printMicroseconds();
+
+    // printVec(vec5);
+
+    // 快排, 两路
+    timer.start();
+
+    quickSort2(vec5);
     
+    timer.stop();
+    timer.printMicroseconds();
+
+    // printVec(vec5);
+
     return EXIT_SUCCESS;
 }

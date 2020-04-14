@@ -6,6 +6,10 @@
 template <typename T>
 void shellSort(std::vector<T> &inVec)
 {
+    if (inVec.size() <= 1) {
+        return;
+    }
+
     int length = inVec.size();
     int h =  1;
     while (h < length / 3) {
