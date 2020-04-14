@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     timer.start();
 
-    insertionSort(vec);
+    insertionSort(vec, 0, vec.size() - 1);
 
     timer.stop();
     timer.printTimeConsumed();

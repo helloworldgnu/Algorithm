@@ -3,6 +3,8 @@
 #ifndef Merge_Sort_H
 #define Merge_Sort_H
 
+#include "../insertion/InsertionSort.h"
+
 static std::vector<int> aux;
 
 template <typename T>
@@ -33,10 +35,20 @@ void __merge_sort(std::vector<T> &inVec, int low, int heigh)
         return;
     }
 
-    int mid = low + (heigh - low) / 2;
+    int count = heigh - low;
+    if (count <= 15) {
+        insertionSort(inVec, low, heigh);
+        return;
+    }
+
+    int mid = low + count / 2;
     __merge_sort(inVec, low, mid);
     __merge_sort(inVec, mid + 1, heigh);
 
+    if (inVec[mid] < inVec[mid + 1]) {
+        return;
+    }
+    
     __merge(inVec, low, mid, heigh);
 }
 

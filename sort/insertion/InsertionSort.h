@@ -4,12 +4,12 @@
 #define Insertion_Sort_H
 
 template <typename T>
-void insertionSort(std::vector<T> &inVec)
+void insertionSort(std::vector<T> &inVec, int low, int heigh)
 {
     int length = inVec.size();
     T value;
     int j;
-    for (int i = 1; i < length; ++i) {
+    for (int i = low + 1; i <= heigh; ++i) {
         value = inVec[i];
         j = i;
         for (; j > 0; --j) {

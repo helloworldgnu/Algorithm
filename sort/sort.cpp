@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     // 插入排序
     timer.start();
 
-    insertionSort(vec1);
+    insertionSort(vec1, 0, vec1.size() - 1);
     
     timer.stop();
     timer.printMicroseconds();
