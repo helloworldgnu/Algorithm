@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     selectionSort(vec);
     
     timer.stop();
-    timer.printTimeConsumed();
+    timer.printTimeConsumed("selection sort:");
 
     return EXIT_SUCCESS;
 }

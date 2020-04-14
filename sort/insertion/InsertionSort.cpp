@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     insertionSort(vec, 0, vec.size() - 1);
 
     timer.stop();
-    timer.printTimeConsumed();
+    timer.printTimeConsumed("insertion sort:");
 
     return EXIT_SUCCESS;
 }

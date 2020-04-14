@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     shellSort(vec);
     
     timer.stop();
-    timer.printTimeConsumed();
+    timer.printTimeConsumed("shell sort");
 
     return EXIT_SUCCESS;
 }
