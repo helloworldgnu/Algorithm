@@ -3,8 +3,10 @@
 #ifndef Insertion_Sort_H
 #define Insertion_Sort_H
 
+#include "../../util/timer.h"
+
 template <typename T>
-void insertionSort(std::vector<T> &inVec, int low, int heigh)
+void __insertionSort(std::vector<T> &inVec, int low, int heigh)
 {
     if (low >= heigh || inVec.size() <= heigh) {
         return;
@@ -24,6 +26,17 @@ void insertionSort(std::vector<T> &inVec, int low, int heigh)
         }
         inVec[j] = value;
     }
+}
+
+template <typename T>
+void insertionSort(std::vector<T> &inVec, int low, int heigh)
+{
+    Timer timer;
+
+    __insertionSort(inVec, low, heigh);
+
+    timer.stop();
+    timer.printTimeConsumed("insertion sort:");
 }
 
 #endif

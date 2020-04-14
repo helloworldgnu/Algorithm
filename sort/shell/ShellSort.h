@@ -3,8 +3,10 @@
 #ifndef Shell_Sort_H
 #define Shell_Sort_H
 
+#include "../../util/timer.h"
+
 template <typename T>
-void shellSort(std::vector<T> &inVec)
+void __shell_sort(std::vector<T> &inVec)
 {
     if (inVec.size() <= 1) {
         return;
@@ -37,6 +39,17 @@ void shellSort(std::vector<T> &inVec)
 
         h = h / 3;
     }
+}
+
+template <typename T>
+void shellSort(std::vector<T> &inVec)
+{
+    Timer timer;
+
+    __shell_sort(inVec);
+
+    timer.stop();
+    timer.printTimeConsumed("shell sort:");
 }
 
 #endif

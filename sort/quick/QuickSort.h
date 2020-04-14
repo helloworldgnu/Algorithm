@@ -44,7 +44,7 @@ void __quickSort2(std::vector<T> &inVec, int low, int heigh)
     }
 
     if (heigh - low <= 15) {
-        insertionSort(inVec, low, heigh);
+        __insertionSort(inVec, low, heigh);
         return;
     }
 
@@ -54,13 +54,24 @@ void __quickSort2(std::vector<T> &inVec, int low, int heigh)
 }
 
 template <typename T>
-void quickSort2(std::vector<T> &inVec)
+void __quickSort2(std::vector<T> &inVec)
 {
     if (inVec.size() <= 1) {
         return;
     }
 
     __quickSort2(inVec, 0, inVec.size() - 1);
+}
+
+template <typename T>
+void quickSort2(std::vector<T> &inVec)
+{
+    Timer timer;
+
+    __quickSort2(inVec);
+
+    timer.stop();
+    timer.printTimeConsumed("quick sort:");
 }
 
 #endif

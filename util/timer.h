@@ -2,6 +2,9 @@
 #include <iomanip>
 #include <chrono>
 
+#ifndef Sort_Timer_H
+#define Sort_Timer_H
+
 class Timer
 {
 private:
@@ -24,38 +27,39 @@ public:
         this->endPoint = std::chrono::steady_clock::now();
     }
 
-    void printTimeConsumed()
+    void printTimeConsumed(std::string tag)
+    {
+        printSeconds(tag);
+    }
+
+    void printSeconds(std::string tag)
     {
         std::ios::fmtflags fmtflags = std::cout.flags();
 
         std::chrono::steady_clock::duration duration = this->endPoint - this->startPoint;
         double consume = duration.count() * 1.0 / decltype(duration)::period::den;
-        std::cout << std::setprecision(6) << "time consumed: " << consume << "(seconds)" << std::endl;
+        std::cout << std::setprecision(6) << tag << " time consumed: " << consume << "(seconds)" << std::endl;
 
         std::cout.flags(fmtflags);
     }
 
-    void printSeconds()
-    {
-        std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(this->endPoint - this->startPoint);
-        std::cout << "time consumed: " << duration.count() << "(seconds)" << std::endl;
-    }
-
-    void printMilliseconds()
+    void printMilliseconds(std::string tag)
     {
         std::chrono::milliseconds duration = std::chrono::duration_cast<std::chrono::milliseconds>(this->endPoint - this->startPoint);
-        std::cout << "time consumed: " << duration.count() << "(milliseconds)" << std::endl;
+        std::cout << tag << " time consumed: " << duration.count() << "(milliseconds)" << std::endl;
     }
 
-    void printMicroseconds()
+    void printMicroseconds(std::string tag)
     {
         std::chrono::microseconds duration = std::chrono::duration_cast<std::chrono::microseconds>(this->endPoint - this->startPoint);
-        std::cout << "time consumed: " << duration.count() << "(microseconds)" << std::endl;
+        std::cout << tag << " time consumed: " << duration.count() << "(microseconds)" << std::endl;
     }
 
-    void printNanoseconds()
+    void printNanoseconds(std::string tag)
     {
         std::chrono::nanoseconds duration = std::chrono::duration_cast<std::chrono::nanoseconds>(this->endPoint - this->startPoint);
-        std::cout << "time consumed: " << duration.count() << "(nanoseconds)" << std::endl;
+        std::cout << tag << " time consumed: " << duration.count() << "(nanoseconds)" << std::endl;
     }
 };
+
+#endif

@@ -36,7 +36,7 @@ void __merge_sort(std::vector<T> &inVec, int low, int heigh)
 
     int count = heigh - low;
     if (count <= 15) {
-        insertionSort(inVec, low, heigh);
+        __insertionSort(inVec, low, heigh);
         return;
     }
 
@@ -52,18 +52,37 @@ void __merge_sort(std::vector<T> &inVec, int low, int heigh)
 }
 
 template <typename T>
-void mergeSort(std::vector<T> &inVec)
+void __mergeSort(std::vector<T> &inVec)
 {
+    if (inVec.size() <= 1) {
+        return;
+    }
+    
     __merge_sort(inVec, 0, inVec.size() - 1);
 }
 
 template <typename T>
-void mergeSortBU(std::vector<T> &inVec)
+void mergeSort(std::vector<T> &inVec)
 {
+    Timer timer;
+
+    __mergeSort(inVec);
+
+    timer.stop();
+    timer.printTimeConsumed("merge sort ub:");
+}
+
+template <typename T>
+void __mergeSortBU(std::vector<T> &inVec)
+{
+    if (inVec.size() <= 1) {
+        return;
+    }
+
     int length = inVec.size();
 
     for( int i = 0 ; i < length ; i += 16 )
-        insertionSort(inVec, i, std::min(i + 15, length - 1));
+        __insertionSort(inVec, i, std::min(i + 15, length - 1));
     
     int subLength;
     for (int sz = 16; sz < length; sz += sz) {
@@ -72,6 +91,17 @@ void mergeSortBU(std::vector<T> &inVec)
             __merge(inVec, i, i + sz - 1, std::min(i + sz + sz - 1, length - 1));
         }
     }
+}
+
+template <typename T>
+void mergeSortBU(std::vector<T> &inVec)
+{
+    Timer timer;
+
+    __mergeSortBU(inVec);
+
+    timer.stop();
+    timer.printTimeConsumed("merge sort bu:");
 }
 
 #endif
