@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     std::vector<int> vec1 = generateRandomIntVector(0, 1000000, 1000000);
     std::vector<int> vec2 = makeVectorCopy(vec1);
     std::vector<int> vec3 = makeVectorCopy(vec1);
-
+    std::vector<int> vec4 = makeVectorCopy(vec1);
 
     Timer timer;
 
@@ -53,5 +53,13 @@ int main(int argc, char *argv[])
     
     // printVec(vec3);
 
+    // 归并排序, 自底向上
+    timer.start();
+
+    mergeSortBU(vec4);
+    
+    timer.stop();
+    timer.printMicroseconds();
+    
     return EXIT_SUCCESS;
 }

@@ -57,4 +57,21 @@ void mergeSort(std::vector<T> &inVec)
     __merge_sort(inVec, 0, inVec.size() - 1);
 }
 
+template <typename T>
+void mergeSortBU(std::vector<T> &inVec)
+{
+    int length = inVec.size();
+
+    for( int i = 0 ; i < length ; i += 16 )
+        insertionSort(inVec, i, std::min(i + 15, length - 1));
+    
+    int subLength;
+    for (int sz = 16; sz < length; sz += sz) {
+        subLength = length - sz;
+        for (int i = 0; i < subLength; i += sz + sz) {
+            __merge(inVec, i, i + sz - 1, std::min(i + sz + sz - 1, length - 1));
+        }
+    }
+}
+
 #endif
