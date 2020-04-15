@@ -111,10 +111,11 @@ void __heapSort(std::vector<T> &inVec)
     }
 
     inVec.clear();
-    inVec.reserve(maxHeap.size());
+    inVec.resize(maxHeap.size());
 
+    int i = maxHeap.size();
     while (!maxHeap.isEmpty()) {
-        inVec.insert(inVec.begin(), maxHeap.delMax());
+        inVec[--i] = maxHeap.delMax();
     }
 }
 
