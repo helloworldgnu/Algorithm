@@ -8,16 +8,18 @@
 #include "./shell/ShellSort.h"
 #include "./merge/MergeSort.h"
 #include "./quick/QuickSort.h"
+#include "./heap/HeapSort.h"
 
 int main(int argc, char *argv[]) 
 {
-    std::vector<int> vec1 = generateRandomIntVector(0, 5, 1000000);
+    std::vector<int> vec1 = generateRandomIntVector(0, 5, 10);
     // std::vector<int> vec1 = generateBasicOrderIntVector(100000, 10);
     // std::vector<int> vec2 = makeVectorCopy(vec1);
     std::vector<int> vec3 = makeVectorCopy(vec1);
     std::vector<int> vec4 = makeVectorCopy(vec1);
     std::vector<int> vec5 = makeVectorCopy(vec1);
     std::vector<int> vec6 = makeVectorCopy(vec1);
+    std::vector<int> heapVec = makeVectorCopy(vec1);
 
     // shellSort(vec2);
 
@@ -29,5 +31,8 @@ int main(int argc, char *argv[])
 
     quickSort3(vec6);
 
+printVec(heapVec);
+    heapSort(heapVec);
+printVec(heapVec);
     return EXIT_SUCCESS;
 }
