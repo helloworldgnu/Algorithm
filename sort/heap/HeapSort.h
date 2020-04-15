@@ -12,6 +12,7 @@ class MaxHeap
 {
 private:
     std::vector<T> data;
+
 public:
     MaxHeap() {
         data.push_back(0);
@@ -23,8 +24,7 @@ public:
     void swim(int k)
     {
         int ancestor;
-        while (k > 1)
-        {
+        while (k > 1) {
             ancestor = k / 2;
             if (data[k] > data[ancestor]) {
                 std::swap(data[k], data[ancestor]);
@@ -42,8 +42,7 @@ public:
     {
         int size = data.size();
         int succesor = 2 * k;
-        while (succesor < size) 
-        {
+        while (succesor < size)  {
             if (succesor + 1 < size) {
                 if (data[succesor] < data[succesor + 1]) {
                     succesor = succesor + 1;
@@ -62,15 +61,20 @@ public:
 
     T delMax()
     {
-        assert(size() > 1);
+        assert(!isEmpty());
 
         T maxElement;
-        if (size() > 1) {
-            maxElement = data.back();
-            data[1] = maxElement;
+        int size = data.size();
+        if (size >= 4) {
+            maxElement = data[1];
+            data[1] = data.back();
             data.pop_back();
 
             sink(1);
+        } else if (size == 3) {
+            maxElement = data[1];
+            data[1] = data.back();
+            data.pop_back();
         } else {
             maxElement = data.back();
             data.pop_back();
@@ -87,7 +91,7 @@ public:
 
     bool isEmpty()
     {
-        return data.size() <= 1;
+        return size() == 0;
     }
 
     int size()
@@ -102,16 +106,15 @@ template <typename T>
 void __heapSort(std::vector<T> &inVec)
 {
     MaxHeap<T> maxHeap;
-    for (auto item : inVec) {
+    for (auto &item : inVec) {
         maxHeap.insert(item);
     }
 
     inVec.clear();
-    inVec.resize(maxHeap.size());
-    while (!maxHeap.isEmpty())
-    {
-        std::cout << maxHeap.delMax() << " " << std::endl;
-        // inVec.insert(inVec.begin(), maxHeap.delMax());
+    inVec.reserve(maxHeap.size());
+
+    while (!maxHeap.isEmpty()) {
+        inVec.insert(inVec.begin(), maxHeap.delMax());
     }
 }
 

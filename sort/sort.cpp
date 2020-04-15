@@ -12,27 +12,26 @@
 
 int main(int argc, char *argv[]) 
 {
-    std::vector<int> vec1 = generateRandomIntVector(0, 5, 10);
+    std::vector<int> vec1 = generateRandomIntVector(0, 100000, 100000);
     // std::vector<int> vec1 = generateBasicOrderIntVector(100000, 10);
     // std::vector<int> vec2 = makeVectorCopy(vec1);
-    std::vector<int> vec3 = makeVectorCopy(vec1);
-    std::vector<int> vec4 = makeVectorCopy(vec1);
-    std::vector<int> vec5 = makeVectorCopy(vec1);
-    std::vector<int> vec6 = makeVectorCopy(vec1);
+    std::vector<int> mergeVec = makeVectorCopy(vec1);
+    std::vector<int> mergeBUVector = makeVectorCopy(vec1);
+    std::vector<int> quick2Vec = makeVectorCopy(vec1);
+    std::vector<int> quick3Vec = makeVectorCopy(vec1);
     std::vector<int> heapVec = makeVectorCopy(vec1);
 
     // shellSort(vec2);
 
-    mergeSort(vec3);
+    mergeSort(mergeVec);
 
-    mergeSortBU(vec4);
+    mergeSortBU(mergeBUVector);
 
-    quickSort2(vec5);
+    quickSort2(quick2Vec);
 
-    quickSort3(vec6);
+    quickSort3(quick3Vec);
 
-printVec(heapVec);
     heapSort(heapVec);
-printVec(heapVec);
+
     return EXIT_SUCCESS;
 }
